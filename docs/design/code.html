@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>1RM Calculator</title>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "primary-dark": "#0f4bc2",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "card-dark": "#1c222e",
+                        "input-dark": "#282e39",
+                        "text-secondary": "#9da6b9",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        body {
+            min-height: max(884px, 100dvh);
+        }.exercise-card { display: none; }#ex-squat:checked ~ .exercise-display .card-squat { display: block; animation: fadeIn 0.3s ease-out; }
+        #ex-bench:checked ~ .exercise-display .card-bench { display: block; animation: fadeIn 0.3s ease-out; }
+        #ex-deadlift:checked ~ .exercise-display .card-deadlift { display: block; animation: fadeIn 0.3s ease-out; }
+        #ex-overhead:checked ~ .exercise-display .card-overhead { display: block; animation: fadeIn 0.3s ease-out; }#ex-squat:checked ~ .exercise-selector label[for="ex-squat"],
+        #ex-bench:checked ~ .exercise-selector label[for="ex-bench"],
+        #ex-deadlift:checked ~ .exercise-selector label[for="ex-deadlift"],
+        #ex-overhead:checked ~ .exercise-selector label[for="ex-overhead"] {
+            background-color: #135bec;
+            color: white;
+            border-color: #135bec;
+            box-shadow: 0 4px 6px -1px rgba(19, 91, 236, 0.3);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased min-h-screen flex flex-col">
+<header class="sticky top-0 z-20 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+<div class="flex items-center justify-between p-4 pb-2">
+<h1 class="text-gray-900 dark:text-white text-xl font-bold leading-tight tracking-tight">1RM Calculator</h1>
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors text-gray-900 dark:text-white">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<div class="px-4 pb-4">
+<div class="flex p-1 bg-gray-200 dark:bg-input-dark rounded-lg">
+<label class="flex-1 text-center cursor-pointer">
+<input checked="" class="peer sr-only" name="unit" type="radio" value="lbs"/>
+<span class="block py-1.5 text-sm font-semibold rounded-md text-gray-500 dark:text-text-secondary peer-checked:bg-white dark:peer-checked:bg-primary peer-checked:text-gray-900 dark:peer-checked:text-white peer-checked:shadow-sm transition-all">
+                        Lbs
+                    </span>
+</label>
+<label class="flex-1 text-center cursor-pointer">
+<input class="peer sr-only" name="unit" type="radio" value="kg"/>
+<span class="block py-1.5 text-sm font-semibold rounded-md text-gray-500 dark:text-text-secondary peer-checked:bg-white dark:peer-checked:bg-primary peer-checked:text-gray-900 dark:peer-checked:text-white peer-checked:shadow-sm transition-all">
+                        Kg
+                    </span>
+</label>
+</div>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto p-4 space-y-6 pb-24">
+<div class="space-y-4">
+<input checked="" class="sr-only" id="ex-squat" name="exercise" type="radio"/>
+<input class="sr-only" id="ex-bench" name="exercise" type="radio"/>
+<input class="sr-only" id="ex-deadlift" name="exercise" type="radio"/>
+<input class="sr-only" id="ex-overhead" name="exercise" type="radio"/>
+<div class="flex items-center justify-between pl-1">
+<label class="block text-sm font-medium text-gray-500 dark:text-text-secondary uppercase tracking-wider">Select Exercise</label>
+</div>
+<div class="exercise-selector flex gap-3 overflow-x-auto no-scrollbar pb-1 -mx-4 px-4 scroll-smooth">
+<label class="flex-shrink-0 cursor-pointer bg-white dark:bg-card-dark border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-semibold rounded-full px-5 py-2.5 transition-all whitespace-nowrap select-none hover:bg-gray-50 dark:hover:bg-gray-800" for="ex-squat">
+                    Squat
+                </label>
+<label class="flex-shrink-0 cursor-pointer bg-white dark:bg-card-dark border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-semibold rounded-full px-5 py-2.5 transition-all whitespace-nowrap select-none hover:bg-gray-50 dark:hover:bg-gray-800" for="ex-bench">
+                    Bench Press
+                </label>
+<label class="flex-shrink-0 cursor-pointer bg-white dark:bg-card-dark border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-semibold rounded-full px-5 py-2.5 transition-all whitespace-nowrap select-none hover:bg-gray-50 dark:hover:bg-gray-800" for="ex-deadlift">
+                    Deadlift
+                </label>
+<label class="flex-shrink-0 cursor-pointer bg-white dark:bg-card-dark border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-semibold rounded-full px-5 py-2.5 transition-all whitespace-nowrap select-none hover:bg-gray-50 dark:hover:bg-gray-800" for="ex-overhead">
+                    Overhead Press
+                </label>
+</div>
+<div class="exercise-display mt-4 rounded-xl overflow-hidden relative h-48 w-full shadow-lg border border-gray-100 dark:border-gray-800">
+<div class="exercise-card card-squat h-full w-full relative">
+<div class="absolute inset-0 bg-cover bg-center transition-transform hover:scale-105 duration-700" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAVVkrokqeYxHIEugSs6gu5jS0ySwMFQzDphV5_8hlhwtLEf3vIe9D0Ahck3jV7LtltIWAM9xLvp3-KSo3S-VsWeldZuqv5vPKzjlyWL6Bo6zxG96ifjYlX_qdHdXgytuZhNGVBNGFMjPkzg4bMVC0z1xqcT5aaPOh7Uis3L_ZRSJtNJuB2_YcBOWSyoIXIZHAZDFePSHZBKAbh63Kas3IinBrSWg5k0Yj39A4m-yMyJRP1CO2mp_vkRdq1yzZ0nlLIUxZU7wvyuK4");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="absolute bottom-4 left-4 text-white">
+<p class="text-xs font-bold text-primary-400 bg-primary/20 backdrop-blur-sm px-2 py-1 rounded-md inline-block uppercase tracking-wide mb-2 border border-primary/30">Primary Muscle</p>
+<h3 class="text-2xl font-bold leading-none">Legs &amp; Core</h3>
+</div>
+</div>
+<div class="exercise-card card-bench h-full w-full relative">
+<div class="absolute inset-0 bg-cover bg-center transition-transform hover:scale-105 duration-700" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAEsY7ViEP5Ad4RK7WIrX4TxHlWDZWegQlw-Uf7Bh_7Q_6qEKbEihUZ0yinjVLOgfJFIFj8lskmByWabIigjV3TYtCALOiuRNCACHjtvO5lIIBTRzxy4XI9ufN7G4meXhDGMYgW0J-4Hv2BUIYUDejXiqTxqllcKI5TTF7UZvFSmuo8i3qwKT2zUjakrjccUfuvj8yf9PZZDWMZRKFGexU4zdUA3MttFVIAsZIOjp5yg8fpn0CKdb0mU1ZpagKLrzvNwqDPwn59OW4");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="absolute bottom-4 left-4 text-white">
+<p class="text-xs font-bold text-primary-400 bg-primary/20 backdrop-blur-sm px-2 py-1 rounded-md inline-block uppercase tracking-wide mb-2 border border-primary/30">Primary Muscle</p>
+<h3 class="text-2xl font-bold leading-none">Chest &amp; Triceps</h3>
+</div>
+</div>
+<div class="exercise-card card-deadlift h-full w-full relative">
+<div class="absolute inset-0 bg-cover bg-center transition-transform hover:scale-105 duration-700" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAGXz_---9le5jtysCXf1XmvOrRdRdVAaddvSVy36x0rxD5WBLA10QvJBiiBtN1vjCR670aV27w9eNtgxWrwvNM58qdf_IL1MJoMY21X4rzgYKuZpf7pLo0CvZpiyCVsxFDUdItZVLEpNyumkihulL46AeHhjZCkN0OAFhZ7u5WXNxW3Xm0Xao46vCDLDWm2SNFXAjfl10qYqzA4_5VOrDRiAwEGebWg-b68P3CE9XMI7uiqxqQUd6P4KitYlIx8sIZPtgmLx_WPa8");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="absolute bottom-4 left-4 text-white">
+<p class="text-xs font-bold text-primary-400 bg-primary/20 backdrop-blur-sm px-2 py-1 rounded-md inline-block uppercase tracking-wide mb-2 border border-primary/30">Primary Muscle</p>
+<h3 class="text-2xl font-bold leading-none">Back &amp; Legs</h3>
+</div>
+</div>
+<div class="exercise-card card-overhead h-full w-full relative">
+<div class="absolute inset-0 bg-cover bg-center transition-transform hover:scale-105 duration-700" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCNdmeE-DluOgXFaxBHGCHa01x7D8BN3t-cBcZQIVqMNaIE99bg7YVPlWE6BEOZcm7bk8JErJyUuBH73hk7eDHGaIW2WVNFFPia2gJvpskxjc6Jd7k5PHf-lRy_O9y7C3eNhBW1KrV153NRt-jKqRyNHB0wSuJQCCkQFDMa3TUWtbBJDVslL4eE9k1RQV7DNn9O-fm99sFaH_SaFtoERU8GSnT3_MdTIazlAZ8LR1FzF0jzxgg-Z8JIPdamA8NwPwjO95xLHbI2wFw");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="absolute bottom-4 left-4 text-white">
+<p class="text-xs font-bold text-primary-400 bg-primary/20 backdrop-blur-sm px-2 py-1 rounded-md inline-block uppercase tracking-wide mb-2 border border-primary/30">Primary Muscle</p>
+<h3 class="text-2xl font-bold leading-none">Shoulders</h3>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-card-dark rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 p-6 space-y-6">
+<div class="flex gap-4">
+<div class="flex-1 space-y-2">
+<label class="block text-xs font-medium text-gray-500 dark:text-text-secondary uppercase tracking-wider">Weight</label>
+<div class="relative">
+<input class="w-full bg-gray-50 dark:bg-input-dark border-transparent focus:border-primary focus:ring-0 rounded-lg text-gray-900 dark:text-white text-2xl font-bold placeholder:text-gray-400 dark:placeholder:text-gray-600 px-4 py-3 transition-colors text-center" placeholder="0" type="number"/>
+<span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-gray-400">LBS</span>
+</div>
+</div>
+<div class="flex-1 space-y-2">
+<label class="block text-xs font-medium text-gray-500 dark:text-text-secondary uppercase tracking-wider">Reps</label>
+<input class="w-full bg-gray-50 dark:bg-input-dark border-transparent focus:border-primary focus:ring-0 rounded-lg text-gray-900 dark:text-white text-2xl font-bold placeholder:text-gray-400 dark:placeholder:text-gray-600 px-4 py-3 transition-colors text-center" placeholder="0" type="number"/>
+</div>
+</div>
+</div>
+<div class="bg-gradient-to-br from-primary/10 to-transparent dark:from-primary/20 dark:to-transparent rounded-xl border border-primary/20 p-6 text-center">
+<p class="text-sm text-gray-500 dark:text-gray-400 mb-1">Estimated One Rep Max</p>
+<div class="text-5xl font-black text-primary tracking-tight">-- <span class="text-xl font-medium text-gray-400 align-baseline ml-1">LBS</span></div>
+<div class="mt-4 grid grid-cols-3 gap-2 text-center divide-x divide-gray-200 dark:divide-gray-700">
+<div>
+<div class="text-xs text-gray-500">90%</div>
+<div class="font-bold text-gray-900 dark:text-white">--</div>
+</div>
+<div>
+<div class="text-xs text-gray-500">80%</div>
+<div class="font-bold text-gray-900 dark:text-white">--</div>
+</div>
+<div>
+<div class="text-xs text-gray-500">70%</div>
+<div class="font-bold text-gray-900 dark:text-white">--</div>
+</div>
+</div>
+</div>
+</main>
+<div class="fixed bottom-0 left-0 w-full p-4 bg-background-light/80 dark:bg-background-dark/90 backdrop-blur-md border-t border-gray-200 dark:border-gray-800 z-30">
+<button class="w-full h-14 bg-primary hover:bg-primary-dark text-white rounded-xl text-lg font-bold shadow-lg shadow-primary/30 flex items-center justify-center gap-2 transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined">calculate</span>
+            Calculate 1RM
+        </button>
+</div>
+
+</body></html>
