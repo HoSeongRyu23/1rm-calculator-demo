@@ -55,41 +55,25 @@
   <!-- Main Content -->
   <main class="flex-1 overflow-y-auto p-4 space-y-6 pb-24">
     <div class="space-y-4">
-      <!-- Exercise Selection (Hidden Radio Buttons) -->
-      <input type="radio" name="exercise" id="ex-squat" value="squat" checked class="sr-only">
-      <input type="radio" name="exercise" id="ex-bench" value="bench" class="sr-only">
-      <input type="radio" name="exercise" id="ex-deadlift" value="deadlift" class="sr-only">
-      <input type="radio" name="exercise" id="ex-overhead" value="overhead" class="sr-only">
-
       <div class="flex items-center justify-between pl-1">
-        <label class="block text-sm font-medium text-gray-500 dark:text-text-secondary uppercase tracking-wider">Select
+        <label for="exercise-select"
+          class="block text-sm font-medium text-gray-500 dark:text-text-secondary uppercase tracking-wider">Select
           Exercise</label>
       </div>
 
-      <!-- Exercise Pills -->
-      <div class="exercise-selector flex gap-3 overflow-x-auto no-scrollbar pb-1 -mx-4 px-4 scroll-smooth">
-        <label for="ex-squat"
-          class="flex-shrink-0 cursor-pointer bg-white dark:bg-card-dark border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-semibold rounded-full px-5 py-2.5 transition-all whitespace-nowrap select-none hover:bg-gray-50 dark:hover:bg-gray-800">
-          Squat
-        </label>
-        <label for="ex-bench"
-          class="flex-shrink-0 cursor-pointer bg-white dark:bg-card-dark border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-semibold rounded-full px-5 py-2.5 transition-all whitespace-nowrap select-none hover:bg-gray-50 dark:hover:bg-gray-800">
-          Bench Press
-        </label>
-        <label for="ex-deadlift"
-          class="flex-shrink-0 cursor-pointer bg-white dark:bg-card-dark border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-semibold rounded-full px-5 py-2.5 transition-all whitespace-nowrap select-none hover:bg-gray-50 dark:hover:bg-gray-800">
-          Deadlift
-        </label>
-        <label for="ex-overhead"
-          class="flex-shrink-0 cursor-pointer bg-white dark:bg-card-dark border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-semibold rounded-full px-5 py-2.5 transition-all whitespace-nowrap select-none hover:bg-gray-50 dark:hover:bg-gray-800">
-          Overhead Press
-        </label>
-      </div>
+      <!-- Exercise Dropdown -->
+      <select id="exercise-select"
+        class="w-full bg-white dark:bg-card-dark border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white font-semibold rounded-lg px-4 py-3 transition-all focus:border-primary focus:ring-2 focus:ring-primary/20 cursor-pointer">
+        <option value="squat" selected>Squat</option>
+        <option value="bench">Bench Press</option>
+        <option value="deadlift">Deadlift</option>
+        <option value="overhead">Overhead Press</option>
+      </select>
 
       <!-- Exercise Display Cards -->
       <div
         class="exercise-display mt-4 rounded-xl overflow-hidden relative h-48 w-full shadow-lg border border-gray-100 dark:border-gray-800">
-        <div class="exercise-card card-squat h-full w-full relative">
+        <div class="exercise-card active" data-exercise="squat">
           <div class="absolute inset-0 bg-cover bg-center transition-transform hover:scale-105 duration-700"
             style="background-image: url('https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=800&h=400&fit=crop&crop=center');">
           </div>
@@ -101,7 +85,7 @@
             <h3 class="text-2xl font-bold leading-none">Legs & Core</h3>
           </div>
         </div>
-        <div class="exercise-card card-bench h-full w-full relative">
+        <div class="exercise-card" data-exercise="bench">
           <div class="absolute inset-0 bg-cover bg-center transition-transform hover:scale-105 duration-700"
             style="background-image: url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&h=400&fit=crop&crop=center');">
           </div>
@@ -113,7 +97,7 @@
             <h3 class="text-2xl font-bold leading-none">Chest & Triceps</h3>
           </div>
         </div>
-        <div class="exercise-card card-deadlift h-full w-full relative">
+        <div class="exercise-card" data-exercise="deadlift">
           <div class="absolute inset-0 bg-cover bg-center transition-transform hover:scale-105 duration-700"
             style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&h=400&fit=crop&crop=center');">
           </div>
@@ -125,7 +109,7 @@
             <h3 class="text-2xl font-bold leading-none">Back & Legs</h3>
           </div>
         </div>
-        <div class="exercise-card card-overhead h-full w-full relative">
+        <div class="exercise-card" data-exercise="overhead">
           <div class="absolute inset-0 bg-cover bg-center transition-transform hover:scale-105 duration-700"
             style="background-image: url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&h=400&fit=crop&crop=center');">
           </div>
