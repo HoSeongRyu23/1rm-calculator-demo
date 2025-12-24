@@ -5,5 +5,65 @@
 @layer base {
   body {
     font-family: 'Lexend', sans-serif;
+    min-height: max(884px, 100dvh);
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Exercise card display logic */
+.exercise-card {
+  display: none;
+}
+
+#ex-squat:checked~.exercise-display .card-squat {
+  display: block;
+  animation: fadeIn 0.3s ease-out;
+}
+
+#ex-bench:checked~.exercise-display .card-bench {
+  display: block;
+  animation: fadeIn 0.3s ease-out;
+}
+
+#ex-deadlift:checked~.exercise-display .card-deadlift {
+  display: block;
+  animation: fadeIn 0.3s ease-out;
+}
+
+#ex-overhead:checked~.exercise-display .card-overhead {
+  display: block;
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Exercise selector active states */
+#ex-squat:checked~.exercise-selector label[for="ex-squat"],
+#ex-bench:checked~.exercise-selector label[for="ex-bench"],
+#ex-deadlift:checked~.exercise-selector label[for="ex-deadlift"],
+#ex-overhead:checked~.exercise-selector label[for="ex-overhead"] {
+  background-color: #135bec;
+  color: white;
+  border-color: #135bec;
+  box-shadow: 0 4px 6px -1px rgba(19, 91, 236, 0.3);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
