@@ -167,24 +167,53 @@
 
     <!-- Result Display -->
     <div
-      class="bg-gradient-to-br from-primary/10 to-transparent dark:from-primary/20 dark:to-transparent rounded-xl border border-primary/20 p-6 text-center">
-      <p class="text-sm text-gray-500 dark:text-gray-400 mb-1">Estimated One Rep Max</p>
-      <div class="text-5xl font-black text-primary tracking-tight">
-        <span id="result-1rm">--</span>
-        <span id="result-unit" class="text-xl font-medium text-gray-400 align-baseline ml-1">LBS</span>
+      class="bg-gradient-to-br from-primary/10 to-transparent dark:from-primary/20 dark:to-transparent rounded-xl border border-primary/20 p-6">
+      <!-- 1RM Display -->
+      <div class="text-center mb-6 pb-6 border-b border-gray-200 dark:border-gray-700">
+        <p class="text-sm text-gray-500 dark:text-gray-400 mb-1">Estimated One Rep Max</p>
+        <div class="text-5xl font-black text-primary tracking-tight">
+          <span id="result-1rm">--</span>
+          <span id="result-unit" class="text-xl font-medium text-gray-400 align-baseline ml-1">LBS</span>
+        </div>
       </div>
-      <div class="mt-4 grid grid-cols-3 gap-2 text-center divide-x divide-gray-200 dark:divide-gray-700">
-        <div>
-          <div class="text-xs text-gray-500">90%</div>
-          <div id="result-90" class="font-bold text-gray-900 dark:text-white">--</div>
+
+      <!-- RM Table -->
+      <div class="space-y-2">
+        <div class="flex items-center justify-between py-2 border-b border-gray-100 dark:border-gray-800">
+          <span class="text-sm font-semibold text-gray-600 dark:text-gray-400">2RM</span>
+          <span id="result-2rm" class="text-lg font-bold text-gray-900 dark:text-white">--</span>
         </div>
-        <div>
-          <div class="text-xs text-gray-500">80%</div>
-          <div id="result-80" class="font-bold text-gray-900 dark:text-white">--</div>
+        <div class="flex items-center justify-between py-2 border-b border-gray-100 dark:border-gray-800">
+          <span class="text-sm font-semibold text-gray-600 dark:text-gray-400">3RM</span>
+          <span id="result-3rm" class="text-lg font-bold text-gray-900 dark:text-white">--</span>
         </div>
-        <div>
-          <div class="text-xs text-gray-500">70%</div>
-          <div id="result-70" class="font-bold text-gray-900 dark:text-white">--</div>
+        <div class="flex items-center justify-between py-2 border-b border-gray-100 dark:border-gray-800">
+          <span class="text-sm font-semibold text-gray-600 dark:text-gray-400">4RM</span>
+          <span id="result-4rm" class="text-lg font-bold text-gray-900 dark:text-white">--</span>
+        </div>
+        <div class="flex items-center justify-between py-2 border-b border-gray-100 dark:border-gray-800">
+          <span class="text-sm font-semibold text-gray-600 dark:text-gray-400">5RM</span>
+          <span id="result-5rm" class="text-lg font-bold text-gray-900 dark:text-white">--</span>
+        </div>
+        <div class="flex items-center justify-between py-2 border-b border-gray-100 dark:border-gray-800">
+          <span class="text-sm font-semibold text-gray-600 dark:text-gray-400">6RM</span>
+          <span id="result-6rm" class="text-lg font-bold text-gray-900 dark:text-white">--</span>
+        </div>
+        <div class="flex items-center justify-between py-2 border-b border-gray-100 dark:border-gray-800">
+          <span class="text-sm font-semibold text-gray-600 dark:text-gray-400">7RM</span>
+          <span id="result-7rm" class="text-lg font-bold text-gray-900 dark:text-white">--</span>
+        </div>
+        <div class="flex items-center justify-between py-2 border-b border-gray-100 dark:border-gray-800">
+          <span class="text-sm font-semibold text-gray-600 dark:text-gray-400">8RM</span>
+          <span id="result-8rm" class="text-lg font-bold text-gray-900 dark:text-white">--</span>
+        </div>
+        <div class="flex items-center justify-between py-2 border-b border-gray-100 dark:border-gray-800">
+          <span class="text-sm font-semibold text-gray-600 dark:text-gray-400">9RM</span>
+          <span id="result-9rm" class="text-lg font-bold text-gray-900 dark:text-white">--</span>
+        </div>
+        <div class="flex items-center justify-between py-2">
+          <span class="text-sm font-semibold text-gray-600 dark:text-gray-400">10RM</span>
+          <span id="result-10rm" class="text-lg font-bold text-gray-900 dark:text-white">--</span>
         </div>
       </div>
     </div>

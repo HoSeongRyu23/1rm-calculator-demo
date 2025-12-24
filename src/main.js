@@ -13,6 +13,12 @@ function calculatePercentage(oneRM, percentage) {
     return (oneRM * percentage) / 100;
 }
 
+// Calculate weight for specific RM (reverse Epley formula)
+// If 1RM = weight × (1 + reps / 30), then weight = 1RM / (1 + reps / 30)
+function calculateWeightForReps(oneRM, reps) {
+    return oneRM / (1 + reps / 30);
+}
+
 function formatResult(value) {
     return value.toFixed(1);
 }
@@ -30,9 +36,15 @@ const weightInput = document.getElementById('weight-input');
 const repsInput = document.getElementById('reps-input');
 const calculateBtn = document.getElementById('calculate-btn');
 const result1RM = document.getElementById('result-1rm');
-const result90 = document.getElementById('result-90');
-const result80 = document.getElementById('result-80');
-const result70 = document.getElementById('result-70');
+const result2RM = document.getElementById('result-2rm');
+const result3RM = document.getElementById('result-3rm');
+const result4RM = document.getElementById('result-4rm');
+const result5RM = document.getElementById('result-5rm');
+const result6RM = document.getElementById('result-6rm');
+const result7RM = document.getElementById('result-7rm');
+const result8RM = document.getElementById('result-8rm');
+const result9RM = document.getElementById('result-9rm');
+const result10RM = document.getElementById('result-10rm');
 const resultUnit = document.getElementById('result-unit');
 const weightUnit = document.getElementById('weight-unit');
 const unitRadios = document.querySelectorAll('input[name="unit"]');
@@ -91,11 +103,19 @@ function handleCalculate() {
         // Calculate 1RM
         const oneRM = calculate1RM(weight, reps);
 
-        // Update results
+        // Update 1RM result
         result1RM.textContent = formatResult(oneRM);
-        result90.textContent = formatResult(calculatePercentage(oneRM, 90));
-        result80.textContent = formatResult(calculatePercentage(oneRM, 80));
-        result70.textContent = formatResult(calculatePercentage(oneRM, 70));
+
+        // Calculate and update 2RM through 10RM
+        result2RM.textContent = formatResult(calculateWeightForReps(oneRM, 2));
+        result3RM.textContent = formatResult(calculateWeightForReps(oneRM, 3));
+        result4RM.textContent = formatResult(calculateWeightForReps(oneRM, 4));
+        result5RM.textContent = formatResult(calculateWeightForReps(oneRM, 5));
+        result6RM.textContent = formatResult(calculateWeightForReps(oneRM, 6));
+        result7RM.textContent = formatResult(calculateWeightForReps(oneRM, 7));
+        result8RM.textContent = formatResult(calculateWeightForReps(oneRM, 8));
+        result9RM.textContent = formatResult(calculateWeightForReps(oneRM, 9));
+        result10RM.textContent = formatResult(calculateWeightForReps(oneRM, 10));
 
         // Add animation
         result1RM.parentElement.classList.add('animate-pulse');
@@ -106,6 +126,7 @@ function handleCalculate() {
         alert(error.message);
     }
 }
+
 
 calculateBtn.addEventListener('click', handleCalculate);
 
