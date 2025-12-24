@@ -67,3 +67,11 @@
     transform: translateY(0);
   }
 }
+
+/* Ensure exercise images don't get cropped */
+.exercise-card .bg-cover {
+  object-fit: cover;
+  object-position: center;
+  background-size: cover;
+  background-position: center center;
+}
