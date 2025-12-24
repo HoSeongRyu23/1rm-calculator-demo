@@ -48,8 +48,26 @@ const result10RM = document.getElementById('result-10rm');
 const resultUnit = document.getElementById('result-unit');
 const weightUnit = document.getElementById('weight-unit');
 const unitRadios = document.querySelectorAll('input[name="unit"]');
+const exerciseSelect = document.getElementById('exercise-select');
+const exerciseCards = document.querySelectorAll('.exercise-card');
 
 let currentUnit = 'lbs';
+
+// Exercise dropdown handler
+exerciseSelect.addEventListener('change', (e) => {
+    const selectedExercise = e.target.value;
+
+    // Hide all cards
+    exerciseCards.forEach(card => {
+        card.classList.remove('active');
+    });
+
+    // Show selected card
+    const selectedCard = document.querySelector(`.exercise-card[data-exercise="${selectedExercise}"]`);
+    if (selectedCard) {
+        selectedCard.classList.add('active');
+    }
+});
 
 // Unit toggle handler
 unitRadios.forEach(radio => {
